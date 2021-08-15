@@ -6,8 +6,6 @@
     width="100%"
   >
     <v-container class="px-10 text-center">
-      <input-form />
-
       <v-form ref="form">
         <v-text-field
           label="Youtube動画10"

@@ -7,6 +7,7 @@
       cols="12"
       sm="6"
       md="4"
+      class="pr-0"
       style="text-align:center"
       @dragover.prevent
       @drop="dropOnTrash"

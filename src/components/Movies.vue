@@ -118,8 +118,9 @@ export default {
       dragMovie (id) {
         this.droppedMovieId = id
       },
-      deleteMovie () {
-       this.$emit('deleteMovie',this)
+       // 動画削除処理
+      deleteMovie (id) {
+       this.$emit('deleteMovie',id)
       },
     },
   }

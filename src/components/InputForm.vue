@@ -1,4 +1,5 @@
 <template>
+  <v-container>
   <v-card
     class="my-10"
     :elevation="formElevation"
@@ -28,6 +29,7 @@
       </v-form>
     </v-container>
   </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -40,29 +42,29 @@ export default {
       movieErrorMessages: [],
       comment: "",
       commentRules: [
-        (value) => !!value || "入力してください",
-        (value) => value.length <= 16 || "16文字以内で入力してください",
+        value => !!value || "入力してください",
+        value => value.length <= 16 || "16文字以内で入力してください",
       ],
-    };
+    }
   },
 
   props: {
     formRounded: {
       type: String,
       required: false,
-      default: "1",
+      default: 'sm',
     },
     formElevation: {
       type: String,
       required: false,
-      default: "1",
+      default: '1',
     },
   },
 
   watch: {
     movieUrl: function (value) {
       this.validateMovieUrl(value);
-    },
+    }
   },
 
   methods: {
@@ -72,23 +74,23 @@ export default {
       const validateComment = this.$refs.form.validate();
       // フォームにエラーがなければ、動画保存処理を実行
       if (this.movieErrorMessages.length === 0 && validateComment) {
-        this.$emit("storeMovie", this.movieUrl, this.comment);
+        this.$emit('storeMovie', this.movieUrl, this.comment)
       }
     },
 
     validateMovieUrl(value) {
       const stringValidation = /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/.test(value);
       if (!value) {
-        this.movieErrorMessages = ["入力してください"];
+        this.movieErrorMessages = ['入力してください']
       } else if (value.length !== 11) {
-        this.movieErrorMessages = ["11文字で入力してください"];
+        this.movieErrorMessages = ['11文字で入力してください']
       } else if (!stringValidation) {
-        this.movieErrorMessages = ["半角英数記号で入力してください"];
+        this.movieErrorMessages = ["半角英数記号で入力してください"]
       } else {
-        this.movieErrorMessages = [];
+        this.movieErrorMessages = []
       }
     },
-  },
-};
+  }
+}
 </script>
 
